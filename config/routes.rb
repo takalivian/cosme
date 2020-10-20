@@ -1,4 +1,32 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+  root to:"posts#index"
+  resources :posts, only: [:index, :new, :create, :show] do
+    member do
+      get :category
+    end
+    
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+    resources :comments, only: :create
+  end
+  resources :categories, only: [:index]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
 end
