@@ -1,0 +1,60 @@
+= render "header"
+.post-category-wrapper
+  .post-category-wrapper__contents
+    .post-category-wrapper__contents__category-list
+      - @categories.each do |category|
+        %ul.dropdwn
+          %li
+            = link_to category.name, category_post_path(category), class: 'category'
+            %ul.dropdwn_menu
+              - category.children.each do |child|
+                %li
+                  =link_to child.name, category_post_path(child)
+    .post-category-wrapper__contents__category-title
+      .post-category-wrapper__contents__category-title__main
+        = @category.name
+      .post-category-wrapper__contents__category-title__sub
+        = @category.name
+        - if @posts_number == 0
+          に関するクチコミがまだありません。
+        - else
+          に関するクチコミが
+          = @posts_number
+          件投稿されています。
+    .post-category-wrapper__contents__posts
+      .post-category-wrapper__contents__posts__title
+        商品一覧
+      .post-category-wrapper__contents__posts__list
+        - if @posts.present?
+          .user-show-wrapper__row__post-contents__items__content
+            - @posts.each do |post|
+              = link_to  post_path(post.id), class: 'link-item' do
+                .user-show-wrapper__row__post-contents__items__content__image
+                  = image_tag post.images[0].url.url, width: "100", height: "100", alt: "pic", class: 'image'
+                .user-show-wrapper__row__post-contents__items__content__info
+                  .user-show-wrapper__row__post-contents__items__content__info__brand
+                    = post.brand
+                  .user-show-wrapper__row__post-contents__items__content__info__name
+                    = post.name.truncate(15)
+                  .user-show-wrapper__row__post-contents__items__content__info__price
+                    = post.praice
+                    円（税抜）
+                  .user-show-wrapper__row__post-contents__items__content__info__star
+                    %div{:id => "star-rate-#{post.id}"}
+                      :javascript
+                        $('#star-rate-#{post.id}').raty({
+                          size: 36,
+                          starOff:  '#{asset_path('star-off.png')}',
+                          starOn : '#{asset_path('star-on.png')}',
+                          starHalf: '#{asset_path('star-half.png')}',
+                          half: true,
+                          readOnly: true,
+                          score: #{post.star},
+                        });
+                      = post.star
+                  .user-show-wrapper__row__post-contents__items__content__info__text
+                    もっと見る
+        - else
+          .user-show-wrapper__row__post-contents__items__no-content
+            まだ投稿がありません
+= render "footer"
