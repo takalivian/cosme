@@ -1,0 +1,124 @@
+// 新規登録
+.account-new-page {
+  height: calc(100vh - 11.5rem);
+  width: 100vw;
+  &__low {
+    max-width: 750px;
+    margin: auto;
+    padding: 5%;
+    &__title {
+      font-size: x-large;
+      padding: 1rem 2rem;
+      border-bottom: 0.5px solid #DCD4D4;
+      margin-bottom: 3rem;
+    }
+    &__contents {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      &__left {
+        width: 47%;
+        .field {
+          margin-bottom: 1rem;
+          width: fit-content;
+          .form-text {
+            height: 1rem;
+            width: 18rem;
+            border: 0.5px solid #988D8D;
+            border-radius: 2px;
+            box-shadow: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            margin-top: 0.5rem;
+          }
+        }
+        .actions {
+          margin-top: 3rem;
+          .form-btn {
+            width: 100%;
+            background-color: $mainColor;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: large;
+            cursor: pointer;
+            -webkit-appearance: none;
+          }
+        }
+      }
+      &__right {
+        &__sns {
+          .sns-login {
+          color: #fff;
+          box-shadow: none;
+          background-color: #d14836;
+          border: none;
+          border-radius: 5px;
+          width: fit-content;
+          padding: 8px 50px;
+          text-align: center;
+          font-size: larger;
+          }
+          .test-login {
+            margin-top: 2rem;
+            .btn-log {
+              color: #fff;
+              box-shadow: none;
+              background-color: navy;
+              border: none;
+              border-radius: 5px;
+              padding: 0 35px;
+              text-align: center;
+              font-size: larger;
+              width: 99%;
+              height: 2.3rem;
+              cursor: pointer;
+              -webkit-appearance: none;
+            }
+          }
+        }
+        &__login {
+          font-size: 0.8rem;
+          margin-top: 2rem;
+          text-align: center;
+          & a {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+// レスポンシブ
+@media screen and (max-width: 480px) {
+  .account-new-page {
+    height: auto;
+  }
+  .account-new-page__low__title {
+    margin-bottom: 1rem;
+  }
+  .account-new-page__low__contents {
+    display: block;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+  .account-new-page__low__contents__left .field .form-text {
+    width: 12rem;
+  }
+  .account-new-page__low__contents__right__sns .sns-login {
+    padding: 8px 12px;
+    font-size: larger;
+  }
+  .account-new-page__low__contents__right__sns {
+    margin-top: 3rem;
+  }
+  .account-new-page__low__contents__right__sns .test-login .btn-log {
+    font-size: medium;
+    padding: 0;
+  }
+}

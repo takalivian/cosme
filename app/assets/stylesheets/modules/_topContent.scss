@@ -1,0 +1,54 @@
+.top-content {
+  background-image: image-url("cosme.jpg");
+  height: calc(100vh - 4rem);
+  background-repeat: no-repeat;
+  background-position: center;
+  display:  block;
+  margin: 0 auto;
+  position:  relative;
+  animation: anime1 2s ease;
+  &__text {
+    font-size: xx-large;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    animation: anime3 3s ease;
+  }
+}
+
+.scroll {
+  position: absolute;
+  bottom: 5%;
+  right: 50%;
+  width: 3em;
+  height: 3em;
+  animation: anime2 4s ease;
+  span {
+    font-size: x-large;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: 25%;
+    left: 33%;
+    transform: translateY(0) rotate(-45deg);
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    z-index: 2;
+    animation: popping-arrow 2s infinite ease-out;
+  }
+  &:hover span {
+    transform: translateY(.5em) rotate(-45deg) ;
+    animation: paused;
+  }
+}
+
+// レスポンシブ
+@media screen and (max-width: 480px) {
+  .top-content {
+    background-size: 47rem;
+  }
+  .top-content__text {
+    font-size: x-large;
+  }
+}

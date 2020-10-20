@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  # devise_for :users, controllers: {
-  #   registrations: 'users/registrations',
-  #   sessions: 'users/sessions',
-  #   omniauth_callbacks: 'users/omniauth_callbacks'
-  # }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    # omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   root to:"posts#index"
   resources :posts, only: [:index, :new, :create, :show] do
     member do
