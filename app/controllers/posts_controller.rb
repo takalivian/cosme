@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.images.new
+    # @post.images.new
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
