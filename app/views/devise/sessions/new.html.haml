@@ -19,15 +19,15 @@
             = f.submit "ログイン", class: "form-btn", id: "submit1"
       .account-new-page__low__contents__right
         .account-new-page__low__contents__right__sns
-          -# = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "sns-login" do
-          -#   = icon('fab', 'google')
-          -#   |
-          -#   Googleでログイン
-          -# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          -#   .test-login
-          -#     = f.hidden_field :email, value: 'test@example.com'
-          -#     = f.hidden_field :password, value: '123456'
-          -#     = f.submit 'テストユーザーでログイン', class: 'btn-log'
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "sns-login" do
+            = icon('fab', 'google')
+            |
+            Googleでログイン
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .test-login
+              = f.hidden_field :email, value: 'test@example.com'
+              = f.hidden_field :password, value: '123456'
+              = f.submit 'テストユーザーでログイン', class: 'btn-log'
         .account-new-page__low__contents__right__login
           アカウントをお持ちで無い方は
           = link_to "こちら", new_user_registration_path
